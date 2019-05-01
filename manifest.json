@@ -1,0 +1,41 @@
+{
+  "name": "MIN APPLICATION",
+  "version": "1.0.0",
+  "description": "get link mp3, tool facebook!",
+  "permissions": [
+        "activeTab",
+        "tabs",
+        "background",
+        "https://api.facebook.com/",
+        "http://curlminpro.000webhostapp.com/",
+        "https://graph.facebook.com/"
+    ],
+  "background": {
+      "scripts": ["background.js"],
+      "persistent": false
+    },
+    "browser_action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "images/get_started16.png",
+        "32": "images/get_started32.png",
+        "48": "images/get_started48.png",
+        "128": "images/get_started128.png"
+      }
+    },
+     "icons": {
+      "16": "images/get_started16.png",
+      "32": "images/get_started32.png",
+      "48": "images/get_started48.png",
+      "128": "images/get_started128.png"
+    },
+      "content_scripts": [
+    {
+      "matches": ["*://www.google.com/*"],
+      "css": ["css/bootstrap/bootstrap.min.css"],
+      "js": ["js/jquery/jquery-3.4.0.min.js","js/bootstrap/bootstrap.min.js"]
+    }
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "manifest_version": 2
+}

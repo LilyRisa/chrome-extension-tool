@@ -1,0 +1,114 @@
+/*
+  ** Author:  @dominix - Văn Min
+  ** Home:    https://www.facebook.com/zake.death
+  ** DO NOT remove these author description when sharing!
+  */
+body{
+	width: 400px;
+	height: 400px;
+
+}
+*{
+	margin:  5px;
+}
+/* mixing */
+
+
+/* mixing */
+
+
+
+.title{
+	position: relative;
+	cursor: pointer;
+	overflow: hidden;
+	border-width: 3px;
+  	border-style: solid;
+  	border-image: 
+    linear-gradient(
+      to bottom, 
+      red, 
+      rgba(0, 0, 0, 0)
+    ) 1 100%;
+
+	/* padding: 5px 5px;
+    
+    display: inline-block;
+    justify-content: space-between;
+    align-items: center; */
+    height: 100px;
+}
+.header-logo{
+    height: auto;
+    width: 15%;
+}
+#header-icons{
+	
+    display: inline-block;
+    position: absolute;
+    width: 15px;
+    right: 13px;
+    top: -9px;
+
+}
+.text-header{
+	display: inline-block;
+    position: absolute;
+    width: 40px;
+    /* left: 76%; */
+    /* height: 15px; */
+    font-size: 19px;
+
+}
+.body{
+	position: relative;
+
+}
+.form input{
+	position: absolute;
+	width: 80%;
+	height: 20px;
+	background-color: #FFFFFF;
+    border: 2px solid #AAAAAA;
+    border-radius: 30px;
+    font-weight: 600;
+    color: #666666;
+    padding: 8px 16px;
+    height: 40px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    opacity: 0.7;
+}
+.form .btn{
+	/* display: inline-block;
+	position: absolute;
+	width: 30%;
+	height: 20px;
+	left: 50%; */
+	margin-top: 50px;
+	font-weight: 600;
+    color: #666666;
+    margin-left: 123px;
+}
+.tool{
+	position: relative;
+	height: 100px;
+}
+.tool button{
+	margin: 58px 9px;
+}
+.get-access button{
+	margin: 10px 9px;
+}
+.get-access{
+	height: 100px;
+}
+.fb button{
+	margin: 10px 9px;
+}
+.fb{
+	/* height: 100px; */
+}
+.result{
+	height: 20px;
+}
