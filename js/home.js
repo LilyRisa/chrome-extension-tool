@@ -81,6 +81,7 @@ $(document).ready(function(){
           		code: 'alert("Không phải tab facebook cá nhân, vui lòng vào tab facebook cá nhân của bạn rồi thử lại!")'
         	});
 		}
+		
 		});
 		
 
@@ -88,6 +89,81 @@ $(document).ready(function(){
 		// var scriptTag = document.createElement("script");
 		// scriptTag.innerHTML = myJavaScript;
 		// document.head.appendChild(scriptTag);
+	});
+	chrome.tabs.getSelected(null,function(tab) {
+		var tablink = tab.url;
+		// console.log(tablink);
+		var yt = /^(http(s)?:\/\/)?((w){3}.)?youtu(be|.be)?(\.com)?\//gm;
+		var video_yt = /^(http(s)?:\/\/)?((w){3}.)?youtu(?:be\.com\/watch\?v=|\.be\/)([\w\-\_]*)(&(amp;)?‌​[\w\?‌​=]*)?/gm;
+			if(yt.test(tablink)){
+				$("#default").attr('style','display: none');
+				$("#ytube").attr('style',' ');
+
+			}
+			if(video_yt.test(tablink)){
+				var title = tablink
+					console.log(tablink);
+					$("#linkyt").attr('style','display : none');
+					$("#default").attr('style','display: none');
+					$("#ytube").attr('style',' ');
+					$("#yt-alert").attr('style','display : none');
+					$("#yt-load").html('<img src="https://www.drupal.org/files/issues/throbber_13.gif" width="30" height="30" /> Đang Lấy Thông Tin video. Vui Lòng Đợi...').fadeIn("slow");
+					var url_yt = 'http://curlminpro.000webhostapp.com/curl.php?video='+tablink;
+					$.ajax({
+						url : url_yt,
+						type : 'GET',
+						success : function(result){
+							$("#yt-load").attr('style','display : none');
+							$("#linkyt").attr('style',' ');
+							result = JSON.parse(result);
+							console.log(result);
+							$("#ytresult").html('<h6>Tên video: <a href="#" id="name_yt">'+result.name+'</a></h6>');
+							$(".videomp41080p").on('click',function(){
+								window.open(result.mp4_1080p.direct, '_blank'); 
+							});
+							$(".videomp41080pproxy").on('click',function(){
+								window.open(result.mp4_1080p.proxy, '_blank'); 
+							});
+							$(".videomp41080pS").html(result.mp4_1080p.size);
+
+							$(".videomp4720p").on('click',function(){
+								window.open(result.mp4_720p.direct, '_blank'); 
+							});
+							$(".videomp4720pproxy").on('click',function(){
+								window.open(result.mp4_720p.proxy, '_blank'); 
+							});
+							$(".videomp4720pS").html(result.mp4_720p.size);
+
+							$(".videomp4480p").on('click',function(){
+								window.open(result.mp4_480p.direct, '_blank'); 
+							});
+							$(".videomp4480pproxy").on('click',function(){
+								window.open(result.mp4_480p.proxy, '_blank'); 
+							});
+							$(".videomp4480pS").html(result.mp4_480p.size);
+
+							$(".videomp4360p").on('click',function(){
+								window.open(result.mp4_360p.direct, '_blank'); 
+							});
+							$(".videomp4360pproxy").on('click',function(){
+								window.open(result.mp4_360p.proxy, '_blank'); 
+							});
+							$(".videomp4360pS").html(result.mp4_360p.size);
+
+							$(".videomp4136k").on('click',function(){
+								window.open(result.audio_131k.direct, '_blank'); 
+							});
+							$(".videomp4136kproxy").on('click',function(){
+								window.open(result.audio_131k.proxy, '_blank'); 
+							});
+							$(".videomp4136kS").html(result.audio_131k.size);
+							$("#name_yt").on('click',function(){
+								window.open(title);
+							});
+						}
+
+					});
+				}
 	});
 
 });

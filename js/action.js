@@ -14,7 +14,14 @@ $(document).ready(function(){
 		Del_Selected();
 	});
 	$("#pokeFriend").on('click',function(){
-		pokeFriend();
+		if($("#access_Token").val()!=null){
+			pokeFriend();
+		}else{
+			chrome.tabs.executeScript({
+          		code: 'alert("access token null!");'
+        	});
+		}
+		
 	});
 	$("#menu_filter").on('click',function(){
 		$("#panel_filter").attr('style',' ');
