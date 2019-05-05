@@ -168,6 +168,45 @@ $(document).ready(function(){
 				}
 	});
 
+	//instagram
+	chrome.tabs.getSelected(null,function(tab) {
+		var tablink = tab.url;
+		var ins = /^(http(s)?:\/\/)?((w){3}.)?instagram?(\.com)?\//gm;
+		if(ins.test(tablink)){
+			$("#default").attr('style','display: none');
+			$(".instagram").attr('style',' ');
+			$("#is-get").on('click',function(){
+				var kt_ist= /^(https?:\/\/www\.)?instagram\.com(\/p\/\w+\/?)/gm;
+				var link_inst = $("#ins-link").val();
+				var result_link = 'http://curlminpro.000webhostapp.com/instagram-downloader/index.php?link='+link_inst;
+				if(kt_ist.test(link_inst)){
+					$("#ins-result").attr('style','display : none');
+					$("#ins-load").html('<img src="https://www.drupal.org/files/issues/throbber_13.gif" width="30" height="30" /> Đang Lấy Thông Tin. Vui Lòng Đợi...').fadeIn("slow");
+					$.ajax({
+						url : result_link,
+						type: 'GET',
+						success: function(result){
+							result = JSON.parse(result);
+							if(result.error == null){
+								$("#ins-load").html('Object-type: '+result.type+'<br/><a href="#" id="download-inst">Download here</a>').fadeIn("slow");
+								$("#download-inst").on('click',function(){
+									window.open(result.url, '_blank'); 
+								});
+								
+							}else {
+								$("#ins-result").html('Could not fetch data !').fadeIn("slow");
+							}
+						}
+
+					});
+				}else {
+					$("#ins-result").html('Link image/video is not correct !').fadeIn("slow");
+				}
+			});
+		}
+	});
+
+
 });
 
 // var uid = document.cookie.match(/c_user=(\d+)/)[1],
