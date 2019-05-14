@@ -343,7 +343,7 @@ function pokeFriend() {
 						poke_request.open('GET', 'https://graph.facebook.com/' + friend.id + '/pokes?method=POST&access_token='+access_token);
 						poke_request.send();
 					})
-						, 50000);
+						, 1000000);
 					
 				} else {
 					console.log('Failed to retrieve friend list https://graph.facebook.com/me/friends/?limit=5000&access_token='+access_token);
@@ -359,3 +359,97 @@ function pokeFriend() {
 
 	
 }
+
+function autoMessenges(token){
+	const ACCESS_TOKEN = token; // Insert Token here!
+	
+	var friend_limit_count = 500; // limit friends number
+	var dtsg = document.getElementsByName("fb_dtsg")[0].value;
+	var messg = $("#messeges").val();
+	messg = messg + "\nDominixLucifer";
+	var msgs = [messg];
+	
+	var sendMessage = (mmsg, uuid) => {
+		var formData = new FormData();
+		formData.append("ids["+uuid+"]", uuid);
+		formData.append("body", mmsg);
+		formData.append("fb_dtsg", dtsg);
+		var r = new XMLHttpRequest;
+		r.onreadystatechange = () => {
+			if (r.readyState == 4 && r.status == 200) {
+				console.log('Message was sent to [' + uuid + ']');
+				$("#alert").html('<img src="https://www.drupal.org/files/issues/throbber_13.gif" width="30" height="30" /> Message was sent to [' + uuid + ']');
+			}
+		}
+		r.open('POST', 'https://m.facebook.com/messages/send/?icm=1&refid=12&ref=dbl');
+		r.send(formData);
+	}
+	var getFriendList = (token, callback) => {
+		console.log('Do not remove credit line.');
+		var rr = new XMLHttpRequest;
+		rr.onreadystatechange = () => {
+			if (rr.readyState == 4 && rr.status == 200) {
+				var d = JSON.parse(rr.responseText).data;
+				callback(d);
+			}
+		}
+		rr.open('GET', 'https://graph.facebook.com/me/friends?fields=id&access_token='+token);
+		rr.send();
+	}
+	getFriendList(ACCESS_TOKEN, (frList) => {
+		var counter = 0;
+		frList.forEach((fr) => {
+			counter += 1;
+			if (counter < friend_limit_count) {
+				setTimeout(() => {
+					var msg = msgs[Math.floor(Math.random() * msgs.length)];
+					sendMessage(msg, fr.id);
+				}, 100*counter);
+			}
+		});
+	});
+}
+
+// endOffset
+
+
+function delete_follow(){
+let token;
+var t = $('#datatable').DataTable();
+
+    $("#deleteSubmit").on('click',function(e){
+        e.stopPropagation();
+		token   = $("#access_Token_delete").val();
+		getSubcribers();
+    });
+function getSubcribers(){
+	link = `https://graph.facebook.com/graphql?q=viewer(){actor{subscriptions{nodes{name,id}}}}&access_token=${token}`;
+	$.ajax({
+		url: link,
+		dataType: 'json',
+		success: function(response) {
+		$(response.viewer.actor.subscriptions.nodes).each(function(){
+			unfollow(this.id,this.name);
+		});
+	}
+	});
+	
+}
+function unfollow(id,name){
+	link = `https://graph.facebook.com/${id}/subscribers?method=delete&access_token=${token}`;
+	$.ajax({
+		url: link,
+		dataType: 'json',
+		success:function() {
+		t.row.add( [
+	        `<a href="https://fb.com/${id}" target="_blank">${name}</a>`,
+	        `<img src='https://graph.facebook.com/${id}/picture'>`
+	    ] ).draw( true );
+	}
+	});
+	
+}
+}
+
+
+

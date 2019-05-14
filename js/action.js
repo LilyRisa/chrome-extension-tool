@@ -23,12 +23,51 @@ $(document).ready(function(){
 		}
 		
 	});
+	// $("#deleteSubmit").on('click',function(e){
+	// 	if($("#access_Token_delete").val()!=null){
+	// 		delete_follow($("#access_Token_delete").val());
+	// 	}else{
+	// 		chrome.tabs.executeScript({
+ //          		code: 'alert("access token null!");'
+ //        	});
+	// 	}
+		
+	// });
+	$("#messFriend").on('click',function(){
+		if($("#access_Token_mess").val()!=null){
+			autoMessenges($("#access_Token_mess").val());
+		}else{
+			chrome.tabs.executeScript({
+          		code: 'alert("access token null!");'
+        	});
+		}
+	});
 	$("#menu_filter").on('click',function(){
 		$("#panel_filter").attr('style',' ');
 		$("#panel_poke").attr('style','display: none');
+		$("#panel_messenges").attr('style','display: none');
+		$("#panel_delete").attr('style','display: none');
 	});
 	$("#menu_poke").on('click',function(){
 		$("#panel_poke").attr('style',' ');
 		$("#panel_filter").attr('style','display: none');
+		$("#panel_messenges").attr('style','display: none');
+		$("#panel_delete").attr('style','display: none');
 	});
+	$("#menu_messenges").on('click',function(){
+		$("#panel_poke").attr('style','display: none ');
+		$("#panel_filter").attr('style','display: none');
+		$("#panel_messenges").attr('style',' ');
+		$("#panel_delete").attr('style','display: none');
+	});
+	$("#delete_load").on('click',function(){
+		$("#panel_poke").attr('style','display: none ');
+		$("#panel_filter").attr('style','display: none');
+		$("#panel_messenges").attr('style','display: none');
+		$("#panel_delete").attr('style',' ');
+		delete_follow();
+	});
+
 });
+
+

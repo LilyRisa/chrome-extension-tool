@@ -47,13 +47,16 @@ $(document).ready(function(){
     		var regex = /^(?:https?:\/\/)?(?:www\.)?(?:facebook|fb|m\.facebook)\.(?:com|me)/gm;
 		if (regex.test(tablink)) {
 			$("#result-msg").html('<img src="https://www.drupal.org/files/issues/throbber_13.gif" width="30" height="30" /> Đang Lấy Thông Tin. Vui Lòng Đợi...').fadeIn("slow");
-			var uname = /(?:https?:\/\/)?(?:www\.)?(?:facebook|fb|m\.facebook)\.(?:com|me)\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w\-]*\/)*([\w\-\.]+)(?:\/)?/gm;
-			var Fbname = uname.exec(tablink)[1];
-			var pass = $("#password").val();
-			if(pass != null){
-			var result = getToken(Fbname,pass);
-			console.log(result);
-			$.ajax({
+			var uname = /(?:https?:\/\/)?(?:www\.)?(?:facebook|fb|m\.facebook)\.(?:com|me)\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w\-]*\/)*([\w\-\.]+)(?:\/)?/i;
+			if(uname.test(tablink)){
+				var testname = uname.exec(tablink);
+				console.log(testname);
+				var Fbname = uname.exec(tablink)[1];
+				var pass = $("#password").val();
+				if(pass != null){
+				var result = getToken(Fbname,pass);
+				console.log(result);
+				$.ajax({
                     url : result, 
                     type : "get", 
 
@@ -70,11 +73,17 @@ $(document).ready(function(){
                     }
                 });
 			
-		}else{
-			chrome.tabs.executeScript({
-          		code: 'alert("password null!");'
+			}else{
+				chrome.tabs.executeScript({
+          			code: 'alert("password null!");'
         	});
-		}
+			}
+			}else{
+				chrome.tabs.executeScript({
+          			code: 'alert("Hãy vào profile facebook của bạn!");'
+        	});
+			}
+			
 			
     		
 		} else {
@@ -247,6 +256,38 @@ $(document).ready(function(){
 // }, http.send(params);
 
 // var password = prompt("Enter password facebook !");if(password != null)
+
+function saveTextAsFile()
+{
+    var textToWrite = document.getElementById("inputTextToSave").value;
+    var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
+    var fileNameToSaveAs = document.getElementById("inputFileNameToSaveAs").value;
+
+
+
+}
+
+
+function destroyClickedElement(event)
+{
+    document.body.removeChild(event.target);
+}
+
+
+function loadFileAsText()
+{
+    var fileToLoad = document.getElementById("fileToLoad").files[0];
+
+
+    var fileReader = new FileReader();
+    fileReader.onload = function(fileLoadedEvent) 
+    {
+        var textFromFileLoaded = fileLoadedEvent.target.result;
+        document.getElementById("inputTextToSave").value = textFromFileLoaded;
+    };
+    fileReader.readAsText(fileToLoad, "UTF-8");
+}
+
 
 
 
