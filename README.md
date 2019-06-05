@@ -1,5 +1,5 @@
-# chrome-extension-tool
-## feature:
+# Chrome-extension-tool
+## Feature:
  - Get link youtube, download, direct, audio/mp4
  - Tool facebook: get token, auto poke all friend, remove no interract friend,... (updating)
  - Download image/video instagram
