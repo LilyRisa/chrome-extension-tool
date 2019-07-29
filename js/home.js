@@ -46,7 +46,7 @@ $(document).ready(function(){
     		// console.log(tablink);
     		var regex = /^(?:https?:\/\/)?(?:www\.)?(?:facebook|fb|m\.facebook)\.(?:com|me)/gm;
 		if (regex.test(tablink)) {
-			$("#result-msg").html('<img src="https://www.drupal.org/files/issues/throbber_13.gif" width="30" height="30" /> Đang Lấy Thông Tin. Vui Lòng Đợi...').fadeIn("slow");
+			$("#result-msg").html('<img src="../images/loading.gif" width="30" height="30" /> Đang Lấy Thông Tin. Vui Lòng Đợi...').fadeIn("slow");
 			var uname = /(?:https?:\/\/)?(?:www\.)?(?:facebook|fb|m\.facebook)\.(?:com|me)\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w\-]*\/)*([\w\-\.]+)(?:\/)?/i;
 			if(uname.test(tablink)){
 				var testname = uname.exec(tablink);
@@ -119,7 +119,7 @@ $(document).ready(function(){
 					$("#default").attr('style','display: none');
 					$("#ytube").attr('style',' ');
 					$("#yt-alert").attr('style','display : none');
-					$("#yt-load").html('<img src="https://www.drupal.org/files/issues/throbber_13.gif" width="30" height="30" /> Đang Lấy Thông Tin video. Vui Lòng Đợi...').fadeIn("slow");
+					$("#yt-load").html('<img src="../images/loading.gif" width="30" height="30" /> Đang Lấy Thông Tin video. Vui Lòng Đợi...').fadeIn("slow");
 					var url_yt = 'http://curlminpro.000webhostapp.com/curl.php?video='+tablink;
 					$.ajax({
 						url : url_yt,
@@ -191,7 +191,7 @@ $(document).ready(function(){
 				var result_link = 'http://curlminpro.000webhostapp.com/instagram-downloader/index.php?link='+link_inst;
 				if(kt_ist.test(link_inst)){
 					$("#ins-result").attr('style','display : none');
-					$("#ins-load").html('<img src="https://www.drupal.org/files/issues/throbber_13.gif" width="30" height="30" /> Đang Lấy Thông Tin. Vui Lòng Đợi...').fadeIn("slow");
+					$("#ins-load").html('<img src="../images/loading.gif" width="30" height="30" /> Đang Lấy Thông Tin. Vui Lòng Đợi...').fadeIn("slow");
 					$.ajax({
 						url : result_link,
 						type: 'GET',

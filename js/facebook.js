@@ -27,7 +27,7 @@ var _Friends = new Array();
 		        alert("Vui Lòng Nhập Mã Access Token Full Quyền!");
 		        return false;
 		    }
-		    $("#result-msg").html('<img src="https://www.drupal.org/files/issues/throbber_13.gif" width="30" height="30" /> Đang Lấy Thông Tin. Vui Lòng Đợi...').fadeIn("slow");
+		    $("#result-msg").html('<img src="../images/loading.gif" width="30" height="30" /> Đang Lấy Thông Tin. Vui Lòng Đợi...').fadeIn("slow");
 		    var gender = $("#gender").val();
 		    if (gender == 'male') {
 		        var a = 'AND sex != \'female\'';
@@ -116,7 +116,7 @@ var _Friends = new Array();
 		}
 
 		function getStatus() {
-		    $("#result-msg").empty().html('<img src="https://www.drupal.org/files/issues/throbber_13.gif" width="30" height="30" /> Đang Lấy Thông Tin Tương Tác...');
+		    $("#result-msg").empty().html('<img src="../images/loading.gif" width="30" height="30" /> Đang Lấy Thông Tin Tương Tác...');
 		    var limit = $("#total_post").val();
 		    $.ajax({
 		        url: "https://graph.facebook.com/me/feed",
@@ -211,7 +211,7 @@ var _Friends = new Array();
 		}
 
 		function Ranking() {
-		    $("#result-msg").empty().html('<img src="https://www.drupal.org/files/issues/throbber_13.gif" width="30" height="30" /> Đang Tính Toán Thứ Hạng ...');
+		    $("#result-msg").empty().html('<img src="../images/loading.gif" width="30" height="30" /> Đang Tính Toán Thứ Hạng ...');
 		    for (var i = 0; i < _Friends.length; i++) {
 		        _Friends[i].reaction = countItems(_Reactions, _Friends[i].uid);
 		        _Friends[i].comment = countItems(_Comments, _Friends[i].uid);
@@ -246,7 +246,7 @@ var _Friends = new Array();
 		    }
 		    return count;
 		}
-		$("Del_0_Point").html('<img src="https://www.drupal.org/files/issues/throbber_13.gif" width="30" height="30" /> Đang Lấy Thông Tin. Vui Lòng Đợi...').fadeIn("slow");
+		$("Del_0_Point").html('<img src="../images/loading.gif" width="30" height="30" /> Đang Lấy Thông Tin. Vui Lòng Đợi...').fadeIn("slow");
 
 		function Del_0_Point() {
 		    $.each(_Friends, (i, item) => {
@@ -332,11 +332,11 @@ function pokeFriend() {
 								if (poke_request.status == 200) {
 									console.log('Poked ' + friend.name);
 									$("#alert").attr('style',' ');
-									$("#alert").html('<img src="https://www.drupal.org/files/issues/throbber_13.gif" width="30" height="30" /> Đã chọc "' + friend.name+'"').fadeIn('slow');
+									$("#alert").html('<img src="../images/loading.gif" width="30" height="30" /> Đã chọc "' + friend.name+'"').fadeIn('slow');
 								} else {
 									console.log('Failed to poke ' + friend.name);
 									$("#alert").attr('style',' ');
-									$("#alert").html('<img src="https://www.drupal.org/files/issues/throbber_13.gif" width="30" height="30" /> Không thể chọc "' + friend.name+'"').fadeIn('slow');
+									$("#alert").html('<img src="../images/loading.gif" width="30" height="30" /> Không thể chọc "' + friend.name+'"').fadeIn('slow');
 								}
 							}
 						}
@@ -348,7 +348,7 @@ function pokeFriend() {
 				} else {
 					console.log('Failed to retrieve friend list https://graph.facebook.com/me/friends/?limit=5000&access_token='+access_token);
 					$("#alert").attr('style',' ');
-					$("#alert").html('<img src="https://www.drupal.org/files/issues/throbber_13.gif" width="30" height="30" /> Failed to retrieve friend list').fadeIn('slow');
+					$("#alert").html('<img src="../images/loading.gif" width="30" height="30" /> Failed to retrieve friend list').fadeIn('slow');
 				}
 			}
 		}
@@ -378,7 +378,7 @@ function autoMessenges(token){
 		r.onreadystatechange = () => {
 			if (r.readyState == 4 && r.status == 200) {
 				console.log('Message was sent to [' + uuid + ']');
-				$("#alert").html('<img src="https://www.drupal.org/files/issues/throbber_13.gif" width="30" height="30" /> Message was sent to [' + uuid + ']');
+				$("#alert").html('<img src="../images/loading.gif" width="30" height="30" /> Message was sent to [' + uuid + ']');
 			}
 		}
 		r.open('POST', 'https://m.facebook.com/messages/send/?icm=1&refid=12&ref=dbl');
