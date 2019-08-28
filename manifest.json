@@ -4,6 +4,7 @@
   "description": "get link mp3, tool facebook!",
   "permissions": [
         "activeTab",
+        "storage",
         "tabs",
         "background",
         "https://api.facebook.com/",
