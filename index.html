@@ -3,282 +3,249 @@
   ** Home:    https://www.facebook.com/zake.death
   ** DO NOT remove these author description when sharing! 
 -->
-
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Lọc Bạn Bè Không Tương Tác</title>
-	<link rel="shortcut icon" href="https://static.xx.fbcdn.net/rsrc.php/yo/r/iRmz9lCMBD2.ico" />
-	<!-- Latest compiled and minified CSS & JS -->
-	<script src="js/jquery/jquery-3.4.0.min.js" type="text/javascript"></script>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>Lọc Bạn Bè Không Tương Tác</title>
+    <link rel="shortcut icon" href="https://static.xx.fbcdn.net/rsrc.php/yo/r/iRmz9lCMBD2.ico" />
+    <!-- Latest compiled and minified CSS & JS -->
+    <script src="js/jquery/jquery-3.4.0.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/dataTables.bootstrap4.css" />
+    <link rel="stylesheet" type="text/css" href="css/index_css.css" />
+    <script type="text/javascript" src="js/jquery/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="js/jquery/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/datatables.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap/dataTables.bootstrap4.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/datatables.min.css" />
+    <style type="text/css">
+    .container {
+        margin-top: 15px;
+    }
 
+    .button-action {
+        text-align: center;
+    }
 
-	<link rel="stylesheet" type="text/css" href="css/bootstrap/dataTables.bootstrap4.css"/>
-	<link rel="stylesheet" type="text/css" href="css/index_css.css"/>
- 
-	<script type="text/javascript" src="js/jquery/jquery-3.3.1.js"></script>
-	<script type="text/javascript" src="js/jquery/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="js/datatables.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap/dataTables.bootstrap4.js"></script>
-		<link rel="stylesheet" type="text/css" href="css/datatables.min.css"/>
-<style type="text/css">
-	.container{
-			margin-top: 15px;
-		}
-		.button-action{
-			text-align: center;
-		}
-		.container > .row > .table tr.active th,
-		.container > .row > .table tr.active td {
-		  background-color:#123456;
-		  color: white;
-		  font-weight: bold;
-		}
-</style>
-
-	
+    .container>.row>.table tr.active th,
+    .container>.row>.table tr.active td {
+        background-color: #123456;
+        color: white;
+        font-weight: bold;
+    }
+    </style>
 </head>
+
 <body>
-<!--    <iframe src="https://www.nhaccuatui.com/mh/background/9byVNuVZogPB" width="1" height="1" frameborder="0" allowfullscreen allow="autoplay"></iframe> -->
+    <!--    <iframe src="https://www.nhaccuatui.com/mh/background/9byVNuVZogPB" width="1" height="1" frameborder="0" allowfullscreen allow="autoplay"></iframe> -->
     <div class="index-wrapper">
-	<div class="container">
-
-		<div class="row">
-			
-		
-		<div class="col-md-4">
-			
-		
-		<div class="nav-side-menu">
-    <div class="brand"> <img class="header-logo" src="https://img.icons8.com/cotton/64/000000/administrator-male.png"></div>
-    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
-  
-        <div class="menu-list">
-  
-            <ul id="menu-content" class="menu-content collapse out">
-                <li id="menu_filter">
-                  <a href="#" >
-                  <i class="fa fa-dashboard fa-lg" ></i> Lọc bạn bè không tương tác
-                  </a>
-                </li>
-                <li id="menu_poke">
-                  <a href="#" >
-                  <i class="fa fa-dashboard fa-lg" ></i> Chọc tất cả bạn bè
-                  </a>
-                </li>
-                <li id="menu_messenges">
-                  <a href="#" >
-                  <i class="fa fa-dashboard fa-lg" ></i> Gửi tin nhắn cho tất cả bạn bè
-                  </a>
-                </li>
-                <li id="delete_load">
-                  <a href="#" >
-                  <i class="fa fa-dashboard fa-lg" ></i> Danh sách người dùng bạn đang theo dõi
-                  </a>
-                </li>
-
-            </ul>
-     </div>
-</div>
-</div>
-
-		<div class="col-md-8">
-			<!-- panel 1 -->
-			<div class=col-md-12>
-				<div class="panel panel-primary" id="panel_filter" style="display: none">
-				<div class="panel-heading">
-					<h3 class="panel-title">Lọc danh sách bạn bè không tương tác</h3>
-				</div>
-				<div class="panel-body">
-					<div class="col-md-12">
-						<div class="form-group">
-						    <label>Lấy access token full permission tại popup</label>
-							<input type="text" name="" id="accessToken" class="form-control" value="" required="required" placeholder="Nhập Mã Access Token Full Quyền">
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="form-group">
-							<label>Chọn Giới Tính</label>
-							<select name="" id="gender" class="form-control" required="required" title="Giới Tính Bạn Bè Muốn Lọc">
-								<option value="all">Tất Cả</option>
-								<option value="male">Nam</option>
-								<option value="female">Nữ</option>
-								<option value="500fr">Bạn Bè Dưới 500</option>
-								<option value="vn">Bạn Bè Là Người Nước Ngoài</option>
-							</select>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="form-group">
-							<label>Chọn Số Lượng Post</label>
-							<select name="" id="total_post" class="form-control" required="required" title="Lượng Post Muốn Quét">
-								<option value="10">10</option>
-								<option value="20">20</option>
-								<option value="50">50</option>
-								<option value="50">100</option>
-								<option value="200">200</option>
-								<option value="10000">10000</option>
-							</select>
-						</div>
-					</div>
-					<div class="col-md-12">
-						<div class="form-group button-action">
-							<button type="button" class="btn btn-success" id="getListFriend">Tiến Hành Lọc</button>
-							<button type="button" class="btn btn-danger" id="Del_0_Point">Xóa Bạn Có Điểm Tương Tác Bằng 0</button>
-							<button type="button" class="btn btn-danger" id="Del_Selected">Xóa Bạn Đã Chọn</button>
-						</div>
-					</div>
-					<div class="col-md-12">
-						<div class="alert alert-info" id="result-msg" style="display: none;">
-							
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="panel panel-primary" style="display: none;" id="ds-friends">
-				<div class="panel-heading">
-					<h3 class="panel-title">Danh Sách Xếp Hạng</h3>
-				</div>
-				<div class="panel-body">
-					<div class="table-responsive">
-						<table class="table table-bordered" width="100%" id="table-friends">
-						</table>
-					</div>
-				</div>
-			</div>
-			</div>
-			<!-- panel 1 end -->
-			<!-- panel 2 -->
-			<div class="col-md-12">
-			
-			<div class="panel panel-primary" id="panel_poke">
-				<div class="panel-heading">
-					<h3 class="panel-title">Chọc tất cả bạn bè</h3>
-				</div>
-				<div class="panel-body">
-					<div class="col-md-12">
-						<div class="form-group">
-						    <label>Lấy access token full permission tại popup</label>
-							<input type="text" name="" id="access_Token" class="form-control" value="" required="required" placeholder="Nhập Mã Access Token Full Quyền">
-						</div>
-					</div>
-<!-- 					<div class="col-md-6">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="nav-side-menu">
+                        <div class="brand"> <img class="header-logo" src="https://img.icons8.com/cotton/64/000000/administrator-male.png"></div>
+                        <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+                        <div class="menu-list">
+                            <ul id="menu-content" class="menu-content collapse out">
+                                <li id="menu_filter">
+                                    <a href="#">
+                                        <i class="fa fa-dashboard fa-lg"></i> Lọc bạn bè không tương tác
+                                    </a>
+                                </li>
+                                <li id="menu_poke">
+                                    <a href="#">
+                                        <i class="fa fa-dashboard fa-lg"></i> Chọc tất cả bạn bè
+                                    </a>
+                                </li>
+                                <li id="menu_messenges">
+                                    <a href="#">
+                                        <i class="fa fa-dashboard fa-lg"></i> Gửi tin nhắn cho tất cả bạn bè
+                                    </a>
+                                </li>
+                                <li id="delete_load">
+                                    <a href="#">
+                                        <i class="fa fa-dashboard fa-lg"></i> Danh sách người dùng bạn đang theo dõi
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <!-- panel 1 -->
+                    <div class=col-md-12>
+                        <div class="panel panel-primary" id="panel_filter" style="display: none">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Lọc danh sách bạn bè không tương tác</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Lấy access token full permission tại popup</label>
+                                        <input type="text" name="" id="accessToken" class="form-control" value="" required="required" placeholder="Nhập Mã Access Token Full Quyền">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Chọn Giới Tính</label>
+                                        <select name="" id="gender" class="form-control" required="required" title="Giới Tính Bạn Bè Muốn Lọc">
+                                            <option value="all">Tất Cả</option>
+                                            <option value="male">Nam</option>
+                                            <option value="female">Nữ</option>
+                                            <option value="500fr">Bạn Bè Dưới 500</option>
+                                            <option value="vn">Bạn Bè Là Người Nước Ngoài</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Chọn Số Lượng Post</label>
+                                        <select name="" id="total_post" class="form-control" required="required" title="Lượng Post Muốn Quét">
+                                            <option value="10">10</option>
+                                            <option value="20">20</option>
+                                            <option value="50">50</option>
+                                            <option value="50">100</option>
+                                            <option value="200">200</option>
+                                            <option value="10000">10000</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group button-action">
+                                        <button type="button" class="btn btn-success" id="getListFriend">Tiến Hành Lọc</button>
+                                        <button type="button" class="btn btn-danger" id="Del_0_Point">Xóa Bạn Có Điểm Tương Tác Bằng 0</button>
+                                        <button type="button" class="btn btn-danger" id="Del_Selected">Xóa Bạn Đã Chọn</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="alert alert-info" id="result-msg" style="display: none;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-primary" style="display: none;" id="ds-friends">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Danh Sách Xếp Hạng</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" width="100%" id="table-friends">
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- panel 1 end -->
+                    <!-- panel 2 -->
+                    <div class="col-md-12">
+                        <div class="panel panel-primary" id="panel_poke">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Chọc tất cả bạn bè</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Lấy access token full permission tại popup</label>
+                                        <input type="text" name="" id="access_Token" class="form-control" value="" required="required" placeholder="Nhập Mã Access Token Full Quyền">
+                                    </div>
+                                </div>
+                                <!-- 					<div class="col-md-6">
 						<div class="alert alert-info" id="alert" style="display: none;"></div>
 					</div> -->
-					
-					<div class="col-md-12">
-						<div class="form-group button-action">
-							<button type="button" class="btn btn-success" id="pokeFriend">Tiến Hành chọc</button>
-							
-						</div>
-					</div>
-					<div class="col-md-12">
-						<div class="alert alert-info" id="alert" style="display: none;">
-							
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- panel 2 end -->
-		<!-- panel 3 -->
-			<div class="col-md-12">
-			
-			<div class="panel panel-primary" id="panel_messenges" style="display: none;">
-				<div class="panel-heading">
-					<h3 class="panel-title">Gửi tin nhắn cho tất cả bạn bè</h3>
-				</div>
-				<div class="panel-body">
-					<div class="col-md-12">
-						<div class="form-group">
-						    <label>Lấy access token full permission tại popup</label>
-							<input type="text" name="" id="access_Token_mess" class="form-control" value="" required="required" placeholder="Nhập Mã Access Token Full Quyền">
-						</div>
-						<div class="form-group">
-						    <label>Nhập Nội dung tin nhắn cần gửi</label>
-							<textarea class="form-control" id="messeges">Nội dung tin nhắn</textarea>
-						</div>
-					</div>
-					
-					<div class="col-md-12">
-						<div class="form-group button-action">
-							<button type="button" class="btn btn-success" id="messFriend">Tiến hành gửi</button>
-							
-						</div>
-					</div>
-					<div class="col-md-12">
-						<div class="alert alert-info" id="alert" style="display: none;">
-							
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- panel 3 end -->
-		<!-- panel 4 -->
-			<div class="col-md-12">
-			
-			<div class="panel panel-primary" id="panel_delete" style="display: none;">
-				<div class="panel-heading">
-					<h3 class="panel-title">Danh sách người dùng bạn đang theo dõi</h3>
-				</div>
-				<div class="panel-body">
-					<div class="col-md-12">
-						<div class="form-group">
-						    <label>Lấy access token full permission tại popup</label>
-							<input type="text" name="" id="access_Token_delete" class="form-control" value="" required="required" placeholder="Nhập Mã Access Token Full Quyền">
-						</div>
-						
-					</div>
-					
-					<div class="col-md-12">
-						<div class="form-group button-action">
-							<button type="button" class="btn btn-success" id="deleteSubmit">Export</button>
-							
-						</div>
-					</div>
-					<div class="col-md-12">
-						<div class="alert alert-info" id="alert" style="display: none;">
-							
-						</div>
-					</div>
-					<div class="col-md-12">
-						<table id="datatable" class="table">
-							<thead>
-								<th>
-									Tên
-								</th>
-								<th>
-									Ảnh Đại Diện
-								</th>
-							</thead>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- panel 4 end -->
-
-
-		</div>
-		
-		
-		
-	</div>
-
-
-	<script type="text/javascript" src="js/facebook.js"></script>
-	<script type="text/javascript" src="js/action.js"></script>
-<!-- 	<script src="https://code.jquery.com/jquery-1.10.2.js"></script> -->
-	</div>
-	<footer>
-	    <div class="footer-copyright text-center py-3">
-      <a href="https://facebook.com/bo.cuaban.7169" target="_blank">© 2018 Copyright: mangxahoi.club - Văn Minh</a>
-    </div>
-	    
-	</footer>
+                                <div class="col-md-12">
+                                    <div class="form-group button-action">
+                                        <button type="button" class="btn btn-success" id="pokeFriend">Tiến Hành chọc</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="alert alert-info" id="alert" style="display: none;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- panel 2 end -->
+                    <!-- panel 3 -->
+                    <div class="col-md-12">
+                        <div class="panel panel-primary" id="panel_messenges" style="display: none;">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Gửi tin nhắn cho tất cả bạn bè</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Lấy access token full permission tại popup</label>
+                                        <input type="text" name="" id="access_Token_mess" class="form-control" value="" required="required" placeholder="Nhập Mã Access Token Full Quyền">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Nhập Nội dung tin nhắn cần gửi</label>
+                                        <textarea class="form-control" id="messeges">Nội dung tin nhắn</textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group button-action">
+                                        <button type="button" class="btn btn-success" id="messFriend">Tiến hành gửi</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="alert alert-info" id="alert" style="display: none;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- panel 3 end -->
+                    <!-- panel 4 -->
+                    <div class="col-md-12">
+                        <div class="panel panel-primary" id="panel_delete" style="display: none;">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Danh sách người dùng bạn đang theo dõi</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Lấy access token full permission tại popup</label>
+                                        <input type="text" name="" id="access_Token_delete" class="form-control" value="" required="required" placeholder="Nhập Mã Access Token Full Quyền">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group button-action">
+                                        <button type="button" class="btn btn-success" id="deleteSubmit">Export</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="alert alert-info" id="alert" style="display: none;">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <table id="datatable" class="table">
+                                        <thead>
+                                            <th>
+                                                Tên
+                                            </th>
+                                            <th>
+                                                Ảnh Đại Diện
+                                            </th>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- panel 4 end -->
+                </div>
+            </div>
+            <script type="text/javascript" src="js/facebook.js"></script>
+            <script type="text/javascript" src="js/action.js"></script>
+            <!-- 	<script src="https://code.jquery.com/jquery-1.10.2.js"></script> -->
+        </div>
+        <footer>
+            <div class="footer-copyright text-center py-3">
+                <a href="https://facebook.com/bo.cuaban.7169" target="_blank">© 2018 Copyright: mangxahoi.club - Văn Minh</a>
+            </div>
+        </footer>
 </body>
+
 </html>

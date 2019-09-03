@@ -1,26 +1,28 @@
-  <!-- 
+<!-- 
   ** Author:  @dominix - Văn Min
   ** Home:    https://www.facebook.com/zake.death
   ** DO NOT remove these author description when sharing! 
 -->
-  <!DOCTYPE html>
-  <html>
-    <head>
-      <meta charset="utf-8">
-      <link rel="stylesheet" type="text/css" href="css/style.css">
-      <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    </head>
-    <body>
-      <div class="title">
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="title">
         <img class="header-logo" src="https://img.icons8.com/cotton/64/000000/administrator-male.png">
         <h1 class="text-header">MIN APPLICATION</h1>
         <span id="header-icons">
-          <i class="fas fa-info-circle"></i>
+            <i class="fas fa-info-circle"></i>
         </span>
-      </div>
-      <div id="default">
-       <!--  <div class="body">
+    </div>
+    <div id="default">
+        <!--  <div class="body">
           <center><h5>input link mp3 nhaccuatui</h5></center>
           <div class="form">
             <div class="alert alert-info" id="data_mp3" style="display: none;"></div>
@@ -30,102 +32,102 @@
         
         </div> -->
         <div class="tool">
-          <button id="tool" class="btn btn-default">Tool facebook</button>
+            <button id="tool" class="btn btn-default">Tool facebook</button>
         </div>
         <div class="result">
-          <div class="alert alert-info" id="result-msg" style="display: none;">
-          </div>
-        <div class="get-access">
-
-          <input type="text" class="form-control" id="token" style="display: none">
-          <input type="password" class="form-control" id="password" placeholder="Please enter your password" required>
-          <button id="getToken" class="btn btn-success">Get token</button>
+            <div class="alert alert-info" id="result-msg" style="display: none;">
+            </div>
+            <div class="get-access">
+                <input type="text" class="form-control" id="token" style="display: none">
+                <input type="password" class="form-control" id="password" placeholder="Please enter your password" required>
+                <button id="getToken" class="btn btn-success">Get token</button>
+            </div>
         </div>
-        </div>
-      </div>
-      <div id="ytube" style="display: none">
+    </div>
+    <div id="ytube" style="display: none">
         <div class="tool">
-          <center><h5>Download video/audio youtube</h5></center>
-          <div class="alert alert-info" id="yt-alert">Please open the video to display options</div>
-          <div class="panel panel-primary">
-            <div class="panel-heading">       
+            <center>
+                <h5>Download video/audio youtube</h5>
+            </center>
+            <div class="alert alert-info" id="yt-alert">Please open the video to display options</div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                </div>
+                <div class="panel-body " id="ytresult">
+                    <div class="alert alert-info" id="yt-load" style="display: none;">
+                    </div>
+                </div>
+                <div id="linkyt" style="display: none">
+                    <div id="videomp41080p">
+                        <li style="margin-left: -18px;">
+                            <a class="btn btn-default btn-type disabled" style="margin-left: -11px;">video/mp4 - 1080p</a>
+                            <a class="btn btn-default btn-download videomp41080p" style="margin-left: -30px;" href="#"> Direct</a>
+                            <a class="btn btn-default btn-download videomp41080pproxy" style="margin-left: -30px;" href="#"><i class="fas fa-download"></i></a>
+                            <a class="label label-warning videomp41080pS" style="width: 60px;font-size: 10px;">295.42MB</a>
+                        </li>
+                    </div>
+                    <div id="videomp4720p">
+                        <li style="margin-left: -18px;">
+                            <a class="btn btn-default btn-type disabled" style="margin-left: -11px;">video/mp4 - 720p</a>
+                            <a class="btn btn-default btn-download videomp4720p" style="margin-left: -30px;" href="#"> Direct</a>
+                            <a class="btn btn-default btn-download videomp4720pproxy" style="margin-left: -30px;" href="#"><i class="fas fa-download"></i></a>
+                            <a class="label label-warning videomp4720pS" style="width: 60px;font-size: 10px;">295.42MB</a>
+                        </li>
+                    </div>
+                    <div id="videomp4480p">
+                        <li style="margin-left: -18px;">
+                            <a class="btn btn-default btn-type disabled" style="margin-left: -11px;">video/mp4 - 480p</a>
+                            <a class="btn btn-default btn-download videomp4480p" style="margin-left: -30px;" href="#"> Direct</a>
+                            <a class="btn btn-default btn-download videomp4480pproxy" style="margin-left: -30px;" href="#"><i class="fas fa-download"></i></a>
+                            <a class="label label-warning videomp4480pS" style="width: 60px;font-size: 10px;">295.42MB</a>
+                        </li>
+                    </div>
+                    <div id="videomp4360p">
+                        <li style="margin-left: -18px;">
+                            <a class="btn btn-default btn-type disabled" style="margin-left: -11px;">video/mp4 - 360p</a>
+                            <a class="btn btn-default btn-download videomp4360p" style="margin-left: -30px;" href="#"> Direct</a>
+                            <a class="btn btn-default btn-download videomp4360pproxy" style="margin-left: -30px;" href="#"><i class="fas fa-download"></i></a>
+                            <a class="label label-warning videomp4360pS" style="width: 60px;font-size: 10px;">295.42MB</a>
+                        </li>
+                    </div>
+                    <div id="videomp4360p">
+                        <li style="margin-left: -18px;">
+                            <a class="btn btn-default btn-type disabled" style="margin-left: -11px;">Audio/mp4 - 136k</a>
+                            <a class="btn btn-default btn-download videomp4136k" style="margin-left: -30px;" href="#"> Direct</a>
+                            <a class="btn btn-default btn-download videomp4136kproxy" style="margin-left: -30px;" href="#"><i class="fas fa-download"></i></a>
+                            <a class="label label-warning videomp4136kS" style="width: 60px;font-size: 10px;">295.42MB</a>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="instagram" style="display: none">
+        <div class="tool">
+            <center>
+                <h5>Download image/video instagram</h5>
+            </center>
+            <div class="panel-body " id="ytresult">
+                <div class="alert alert-info" id="ins-load" style="display: none;">
+                </div>
+            </div>
+            <div class="body">
+                <div class="form">
+                    <div class="alert alert-info" id="is-url" style="display: none;"></div>
+                    <input type="text" id="ins-link" placeholder="Enter link image or video instagram">
+                    <button class="btn btn-default" id="is-get" style="margin-left: 10px">Download now!</button>
+                </div>
             </div>
             <div class="panel-body " id="ytresult">
-              <div class="alert alert-info" id="yt-load" style="display: none;">
-              </div>
-              
+                <div class="alert alert-info" id="ins-result" style="display: none;">
+                </div>
             </div>
-            <div id="linkyt" style="display: none">
-            <div id="videomp41080p">
-                <li style="margin-left: -18px;">
-                  <a class="btn btn-default btn-type disabled" style="margin-left: -11px;">video/mp4 - 1080p</a>
-                  <a class="btn btn-default btn-download videomp41080p" style="margin-left: -30px;" href="#"> Direct</a>
-                  <a class="btn btn-default btn-download videomp41080pproxy" style="margin-left: -30px;" href="#"><i class="fas fa-download"></i></a>
-                  <a class="label label-warning videomp41080pS" style="width: 60px;font-size: 10px;">295.42MB</a>
-                </li>
-              </div>
-              <div id="videomp4720p">
-                <li style="margin-left: -18px;">
-                  <a class="btn btn-default btn-type disabled" style="margin-left: -11px;">video/mp4 - 720p</a>
-                  <a class="btn btn-default btn-download videomp4720p" style="margin-left: -30px;" href="#"> Direct</a>
-                  <a class="btn btn-default btn-download videomp4720pproxy" style="margin-left: -30px;" href="#"><i class="fas fa-download"></i></a>
-                  <a class="label label-warning videomp4720pS" style="width: 60px;font-size: 10px;">295.42MB</a>
-                </li>
-              </div>
-              <div id="videomp4480p">
-                <li style="margin-left: -18px;">
-                  <a class="btn btn-default btn-type disabled" style="margin-left: -11px;">video/mp4 - 480p</a>
-                  <a class="btn btn-default btn-download videomp4480p" style="margin-left: -30px;" href="#"> Direct</a>
-                  <a class="btn btn-default btn-download videomp4480pproxy" style="margin-left: -30px;" href="#"><i class="fas fa-download"></i></a>
-                  <a class="label label-warning videomp4480pS" style="width: 60px;font-size: 10px;">295.42MB</a>
-                </li>
-              </div>
-              <div id="videomp4360p">
-                <li style="margin-left: -18px;">
-                  <a class="btn btn-default btn-type disabled" style="margin-left: -11px;">video/mp4 - 360p</a>
-                  <a class="btn btn-default btn-download videomp4360p" style="margin-left: -30px;" href="#"> Direct</a>
-                  <a class="btn btn-default btn-download videomp4360pproxy" style="margin-left: -30px;" href="#"><i class="fas fa-download"></i></a>
-                  <a class="label label-warning videomp4360pS" style="width: 60px;font-size: 10px;">295.42MB</a>
-                </li>
-              </div>
-              <div id="videomp4360p">
-                <li style="margin-left: -18px;">
-                  <a class="btn btn-default btn-type disabled" style="margin-left: -11px;">Audio/mp4 - 136k</a>
-                  <a class="btn btn-default btn-download videomp4136k" style="margin-left: -30px;" href="#"> Direct</a>
-                  <a class="btn btn-default btn-download videomp4136kproxy" style="margin-left: -30px;" href="#"><i class="fas fa-download"></i></a>
-                  <a class="label label-warning videomp4136kS" style="width: 60px;font-size: 10px;">295.42MB</a>
-                </li>
-              </div>
-              </div>
-          </div>
-      </div>
+        </div>
     </div>
+    <script src="js/jquery/jquery-3.4.0.min.js" type="text/javascript"></script>
+    <script src="js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+    <script src="js/home.js" type="text/javascript"></script>
+    <script src="js/getmp3.js" type="text/javascript"></script>
+</body>
 
-    <div class="instagram" style="display: none">
-      <div class="tool">
-        <center><h5>Download image/video instagram</h5></center>
-        <div class="panel-body " id="ytresult">
-              <div class="alert alert-info" id="ins-load" style="display: none;">
-              </div>
-            </div>
-        <div class="body">
-          <div class="form">
-            <div class="alert alert-info" id="is-url" style="display: none;"></div>
-            <input type="text" id="ins-link" placeholder="Enter link image or video instagram">
-            <button class="btn btn-default" id="is-get" style="margin-left: 10px">Download now!</button>
-          </div>
-      </div>
-      <div class="panel-body " id="ytresult">
-              <div class="alert alert-info" id="ins-result" style="display: none;">
-              </div>
-            </div>
-    </div>
-  </div>
-
-
-     <script src="js/jquery/jquery-3.4.0.min.js" type="text/javascript"></script>
-     <script src="js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
-     <script src="js/home.js" type="text/javascript"></script>
-     <script src="js/getmp3.js" type="text/javascript"></script>
-    </body>
-  </html>
+</html>

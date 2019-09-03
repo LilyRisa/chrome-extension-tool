@@ -12,9 +12,12 @@
         "https://graph.facebook.com/"
     ],
   "background": {
-      "scripts": ["background.js"],
+      "page": "back.html",
       "persistent": false
     },
+  "externally_connectable": {
+    "matches": ["https://www.instagram.com/*"]
+  },
     "browser_action": {
       "default_popup": "popup.html",
       "default_icon": {
